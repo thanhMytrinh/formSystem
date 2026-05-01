@@ -1,12 +1,12 @@
 package com.formSystem.formSystem.repository;
 
-import com.formSystem.formSystem.model.Form;
+import com.formSystem.formSystem.model.Submission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface FormsRepository extends JpaRepository<Form, Long> {
-    List<Form> findByStatusOrderByDisplayOrderAsc(String status);
+public interface SubmissionsRepository extends JpaRepository<Submission, Long> {
+    List<Submission> findByFormId(Long formId);
 }
