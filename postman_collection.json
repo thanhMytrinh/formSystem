@@ -1,0 +1,211 @@
+{
+  "info": {
+    "name": "Form System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0",
+    "description": "Collection mẫu để test API Form System"
+  },
+  "item": [
+    {
+      "name": "Get Forms (paged)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/forms?page=0&size=10",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms"],
+          "query": [
+            { "key": "page", "value": "0" },
+            { "key": "size", "value": "10" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Active Forms",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/active",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","active"]
+        }
+      }
+    },
+    {
+      "name": "Get Form by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}"]
+        }
+      }
+    },
+    {
+      "name": "Create Form",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Khảo sát nội bộ 2026\",\n  \"description\": \"Form khảo sát nhân viên\",\n  \"displayOrder\": 1,\n  \"status\": \"ACTIVE\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/forms",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms"]
+        }
+      }
+    },
+    {
+      "name": "Update Form",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Khảo sát nội bộ 2026 - cập nhật\",\n  \"description\": \"Mô tả mới\",\n  \"displayOrder\": 1,\n  \"status\": \"ACTIVE\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Form",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}"]
+        }
+      }
+    },
+    {
+      "name": "Add Field to Form",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"label\": \"Họ tên đầy đủ\",\n  \"type\": \"text\",\n  \"fieldOrder\": 1,\n  \"required\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}/fields",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}","fields"]
+        }
+      }
+    },
+    {
+      "name": "Update Field",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"label\": \"Họ tên cập nhật\",\n  \"type\": \"text\",\n  \"fieldOrder\": 1,\n  \"required\": true\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}/fields/{{fieldId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}","fields","{{fieldId}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Field",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}/fields/{{fieldId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}","fields","{{fieldId}}"]
+        }
+      }
+    },
+    {
+      "name": "Reorder Fields",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fieldIds\": [2, 1, 3]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}/fields/reorder",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}","fields","reorder"]
+        }
+      }
+    },
+    {
+      "name": "Submit Form",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"employeeName\": \"anh.nguyen@sw.com\",\n  \"answers\": {\n    \"1\": \"Nguyễn Văn Anh\",\n    \"2\": \"95\",\n    \"3\": \"2025-10-01\",\n    \"4\": \"#4287f5\",\n    \"5\": \"Junior\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/forms/{{formId}}/submit",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","forms","{{formId}}","submit"]
+        }
+      }
+    },
+    {
+      "name": "Get Submissions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/submissions",
+          "host": ["{{baseUrl}}"],
+          "path": ["api","submissions"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "default"
+    },
+    {
+      "key": "formId",
+      "value": "1",
+      "type": "default"
+    },
+    {
+      "key": "fieldId",
+      "value": "1",
+      "type": "default"
+    }
+  ]
+}
