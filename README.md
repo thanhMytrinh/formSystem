@@ -37,10 +37,12 @@ docker-compose up -d
 
 File `docker-compose.yml` sẽ tạo container MySQL với:
 - **Host**: `localhost`
-- **Port**: `3306`
+- **Port**: `3307` (trên máy host)
 - **Database**: `form_system`
 - **User**: `root`
-- **Password**: `password`
+- **Password**: `1234`
+
+> Lưu ý: ứng dụng Spring Boot trong Docker kết nối tới MySQL bằng `jdbc:mysql://db:3306/form_system`.
 
 #### Option B: Cài đặt MySQL theo cách thủ công
 
@@ -67,7 +69,7 @@ server.port=8080
 # Database
 spring.datasource.url=jdbc:mysql://localhost:3306/form_system
 spring.datasource.username=root
-spring.datasource.password=password
+spring.datasource.password=<your-password>
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 # JPA/Hibernate
@@ -527,7 +529,7 @@ cd formSystem/formSystem
 4. Mở API tại:
 
 - `http://localhost:8080/api/forms`
-- `http://localhost:8080/swagger-ui.html` (khi SpringDoc đã được cấu hình)
+- `http://localhost:8080/swagger-ui.html` (khi Swagger UI đã sẵn sàng)
 
 ## Chạy bằng Docker Compose
 
@@ -546,8 +548,10 @@ Cấu hình MySQL được thiết lập sẵn bằng biến môi trường:
 
 - `SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/form_system?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true`
 - `SPRING_DATASOURCE_USERNAME=root`
-- `SPRING_DATASOURCE_PASSWORD=example`
+- `SPRING_DATASOURCE_PASSWORD=1234`
 - `SPRING_JPA_HIBERNATE_DDL_AUTO=update`
+
+> Trên máy host, nếu bạn cần kết nối trực tiếp tới MySQL từ bên ngoài Docker, hãy dùng `localhost:3307`.
 
 Nếu cần dừng dịch vụ:
 
