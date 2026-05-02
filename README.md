@@ -426,7 +426,7 @@ docker run -d -p 8080:8080 --name form-system form-system:1.0
 - `formSystem/src/main/resources/db/migration/V1__Initial_Schema_And_Data.sql` - Migration script ban đầu
 - `postman_collection.json` - Postman collection mẫu để test API
 
-![Database Diagram](formSystem/formSystem/img/database-diagram.png)
+![Database Diagram](formSystem\img\database-diagram.png)
 
 ### Bảng `forms`
 
